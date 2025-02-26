@@ -8,7 +8,7 @@ function App() {
     const getCharacters = async () => {
       try {
         const response = await fetch(
-          "https://rickandmortyapi.com/api/character?page=29"
+          "https://rickandmortyapi.com/api/character?page=39"
         );
         const data = await response.json();
         console.log(data.results);
@@ -23,38 +23,48 @@ function App() {
 
   return (
     <div>
-      <h1>Rick and Morties bounties</h1>
-      <ol>
-        {characters.map((character) => {
-          return (
-            <div key={character.id}>
-              <article>
-                <div>
-                  <img src= {character.image} />
-                </div>
-                <div>
-                  <h2> {character.name} </h2>
-                  <h3>{character.gender}</h3>
-                  <span>
-                    {character.status} - {character.species}
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    Last Known Location: <br></br>
-                    {character.location.name}
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    Place of origin: <br></br> {character.origin.name}
-                  </span>
-                </div>
-              </article>
-            </div>
-          );
-        })}
-      </ol>
+      <section className="title">
+        <h1>Rick and Morties bounties</h1>
+      </section>
+      <section>
+        <div className="container">
+          {characters.map((character) => {
+            return (
+              <div className="box" key={character.id}>
+                <article>
+                  <div>
+                    <img src={character.image} alt={character.name} />
+                  </div>
+                  <div className="box-content">
+                    <h2> {character.name} </h2>
+                    <h3>{character.gender}</h3>
+                    <p>
+                      <span
+                        style={{
+                          color: character.status === "Dead" ? "red" : "green",
+                        }}
+                      >
+                        {character.status === "Dead" ? "🔴" : "🟢"}
+                      </span>{" "}
+                      {character.status} - {character.species}
+                    </p>
+                  </div>
+                  <div className="known-loc">
+                    <span>
+                      🌍 Last Known Location: <p>{character.location.name}</p>
+                    </span>
+                  </div>
+                  <div className="place-org">
+                    <span>
+                      Place of origin:<p>{character.origin.name}</p>
+                    </span>
+                  </div>
+                </article>
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
