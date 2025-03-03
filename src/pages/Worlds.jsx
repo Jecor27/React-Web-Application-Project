@@ -1,3 +1,7 @@
 export default function Worlds() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
 }

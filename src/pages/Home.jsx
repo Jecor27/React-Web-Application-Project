@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Bounties from "../components/Bounties";
+import HandleChange from "../components/handleChange";
 
 export default function Home() {
   const [characters, setCharacter] = useState([]);
@@ -23,14 +24,6 @@ export default function Home() {
   }, [pageNumber]);
   //console.log(characters);
 
-  const handleNextPage = () => {
-    setPageNumber(pageNumber + 1);
-  };
-
-  const handlePreviousPage = () => {
-    setPageNumber(pageNumber - 1);
-  };
-
   return (
     <div>
       <section className="title">
@@ -42,8 +35,7 @@ export default function Home() {
             <Bounties character={c} />
           ))}
         </div>
-        <button onClick={handlePreviousPage}>Previous Page</button>
-        <button onClick={handleNextPage}>Next Page</button>
+        <HandleChange setPageNumber={setPageNumber} pageNumber={pageNumber} />
       </section>
     </div>
   );
