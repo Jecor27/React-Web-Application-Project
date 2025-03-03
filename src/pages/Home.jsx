@@ -3,12 +3,13 @@ import Bounties from "../components/Bounties";
 
 export default function Home() {
   const [characters, setCharacter] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
     const getCharacters = async () => {
       try {
         const response = await fetch(
-          "https://rickandmortyapi.com/api/character?page=14"
+          `https://rickandmortyapi.com/api/character?page=${pageNumber}`
         );
         const data = await response.json();
         // console.log(data.results);
@@ -19,8 +20,17 @@ export default function Home() {
       }
     };
     getCharacters();
-  }, []);
+  }, [pageNumber]);
   //console.log(characters);
+
+  const handleNextPage = () => {
+    setPageNumber(pageNumber + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setPageNumber(pageNumber - 1);
+  };
+
   return (
     <div>
       <section className="title">
@@ -32,6 +42,8 @@ export default function Home() {
             <Bounties character={c} />
           ))}
         </div>
+        <button onClick={handlePreviousPage}>Previous Page</button>
+        <button onClick={handleNextPage}>Next Page</button>
       </section>
     </div>
   );
