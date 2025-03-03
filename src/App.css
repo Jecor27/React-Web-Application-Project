@@ -5,6 +5,18 @@
   text-align: center;
 }
 
+.links {
+  display: flex;
+  font-size: 3rem;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.worlds {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .title {
   padding: 9rem;
   font-size: xx-large;
