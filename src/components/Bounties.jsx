@@ -1,4 +1,6 @@
 export default function Bounties({ character }) {
+  const bountyAmount = Math.floor(Math.random() * 10000000) + 1; // Generate a random bounty amount between 1 and 10,000
+
   return (
     <div className="box" key={character.id}>
       <article>
@@ -25,6 +27,18 @@ export default function Bounties({ character }) {
         <div className="place-org">
           <span>
             Place of origin:<p>{character.origin.name}</p>
+          </span>
+        </div>
+        <div className="bounty">
+          <span>
+            Bounty:
+            <p>
+              $$
+              {character.status === "Dead"
+                ? " Enemy Killed "
+                : ` ${bountyAmount.toLocaleString()} `}
+              $$
+            </p>
           </span>
         </div>
       </article>
