@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import useStore from "../components/store";
 import Bounties from "../components/Bounties";
 import HandleChange from "../components/handleChange";
 
 export default function Home() {
-  const [characters, setCharacter] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
+  //   const [characters, setCharacter] = useState([]);
+  const { characters, setCharacter, pageNumber, setPageNumber } = useStore();
 
   useEffect(() => {
     const getCharacters = async () => {
