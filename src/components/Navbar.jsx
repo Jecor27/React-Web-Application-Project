@@ -9,8 +9,8 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="right">
-        <Link to="/Worlds">
-          <button className="nav-button">Worlds</button>
+        <Link to="https://rickandmortyapi.com/documentation">
+          <button className="nav-button">Rick and Morties Documentation</button>
         </Link>
       </div>
     </nav>
